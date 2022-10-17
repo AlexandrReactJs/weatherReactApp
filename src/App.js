@@ -1,13 +1,15 @@
 import './App.css';
 import React from 'react';
 import CurrentlyWeather from './components/CurrentlyWather/CurrentlyWeather';
+import ChunkWeather from './components/ChunkWeather/ChunkWeather';
 
 function App() {
 
   return (
     <div className="App">
       <div className='container'>
-        <CurrentlyWeather/>
+        <CurrentlyWeather />
+        <ChunkWeather />
       </div>
     </div>
   );

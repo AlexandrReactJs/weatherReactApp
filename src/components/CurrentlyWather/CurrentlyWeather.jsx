@@ -5,7 +5,7 @@ import windSpeedIcon from '../../assets/icons/windSpeed.png';
 import humidityIcon from '../../assets/icons/humidity.png';
 import pressureIcon from '../../assets/icons/pressure.png';
 import feelsLikeIcon from '../../assets/icons/feelsLike.png'
-const CurrentlyWeather = () => {
+const CurrentlyWeather = ({setCity}) => {
     const APIKey = '8448efcedad71b585b1da4a171837115';
     
     const [cityName, setCityName] = React.useState()
@@ -33,7 +33,6 @@ const CurrentlyWeather = () => {
             setCityName(res.data[0].name)
             axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${res.data[0].lat}&lon=${res.data[0].lon}&appid=${APIKey}`).then((res) => {
                 setData(res.data)
-                console.log(res)
 
             })
         })
@@ -56,7 +55,7 @@ const CurrentlyWeather = () => {
         <div className = { styles.CurrentlyWeather } >
             <div className={styles.weather}>
                 <h1>{Math.floor(data.main.temp - 273)}<span className={styles.deg}>°</span></h1>
-                <img src={`http://openweathermap.org/img/wn/${data ? data.weather[0].icon : 'Выберите город'}@2x.png`} alt="" />
+                <img src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt="" />
             </div>
             <div>
                 <h3 className={styles.cityName}>{cityName}</h3>

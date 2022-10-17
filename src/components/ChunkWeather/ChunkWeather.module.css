@@ -1,0 +1,23 @@
+.chunkWeather{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 40px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 740px;
+    overflow: hidden;
+    padding: 0 10px;
+}
+
+.paginationBt{
+    background: none;
+    outline: none;
+    border: unset;
+    font-size: 52px;
+    font-weight: 800;
+    color: #fff;
+}
