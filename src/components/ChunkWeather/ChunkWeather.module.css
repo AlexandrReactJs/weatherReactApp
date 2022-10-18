@@ -21,3 +21,18 @@
     font-weight: 800;
     color: #fff;
 }
+
+.paginationBt img{
+    width: 40px;
+    height: 40px;
+    opacity: 1;
+    transition: all 0.2s linear;
+}
+
+.paginationBt img:hover{
+    opacity: 0.8;
+}
+
+.backBt{
+    transform: scale(-1, 1);
+}
