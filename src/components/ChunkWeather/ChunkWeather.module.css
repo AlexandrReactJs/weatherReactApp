@@ -1,14 +1,16 @@
 .chunkWeather{
+    margin-top: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-left: 40px;
+    width: 100%;
+    padding-right: 10px;
 }
 
 .wrapper {
     display: flex;
     flex-direction: row;
-    width: 740px;
+    width: 500px;
     overflow: hidden;
     padding: 0 10px;
 }
@@ -20,6 +22,7 @@
     font-size: 52px;
     font-weight: 800;
     color: #fff;
+    margin-left: 5px;
 }
 
 .paginationBt img{

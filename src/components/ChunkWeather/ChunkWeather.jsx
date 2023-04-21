@@ -5,18 +5,18 @@ import OneChunk from './OneChunk/OneChunk';
 import { useSelector } from 'react-redux';
 import nextPrevIcon from '../../assets/icons/nextPrevIcon.png'
 
-const ChunkWeather = ({city}) => {
+const ChunkWeather = ({ city }) => {
     const APIKey = '8448efcedad71b585b1da4a171837115';
     const sityName = useSelector(state => state.currentlyWeather.cityName)
     const [data, setData] = React.useState([]);
     const [posX, setPosX] = React.useState(0)
 
     const nextPosX = () => {
-        setPosX(posX - 750)
+        setPosX(posX - 500)
     }
 
     const prevPosX = () => {
-        setPosX(posX + 750)
+        setPosX(posX + 500)
     }
 
     React.useEffect(() => {
@@ -32,15 +32,21 @@ const ChunkWeather = ({city}) => {
     if (data) {
 
         return (
-            <div className={styles.chunkWeather}>
-                <button className={styles.paginationBt} disabled = {posX === 0 ? "disabled" : ""} onClick={() => {prevPosX()}}><img className={styles.backBt} src={nextPrevIcon}/></button>
-                <div className={styles.wrapper}>
-                    {
-                        data.map((el) => <OneChunk posX = {posX} icon={el.weather[0].icon} temp={el.main.temp} date={el.dt_txt} />)
-                    }
+            <>
+                <div className={styles.chunkWeather}>
+
+                    <div className={styles.wrapper}>
+                        {
+                            data.map((el) => <OneChunk posX={posX} icon={el.weather[0].icon} temp={el.main.temp} date={el.dt_txt} />)
+                        }
+                    </div>
+
                 </div>
-                <button className={styles.paginationBt} disabled={posX === -5250 ? "disabled" : ""} onClick={() => {nextPosX()}}><img src={nextPrevIcon}/></button>
-            </div>
+                <div>
+                    <button className={styles.paginationBt} disabled={posX === 0 ? "disabled" : ""} onClick={() => { prevPosX() }}><img className={styles.backBt} src={nextPrevIcon} /></button>
+                    <button className={styles.paginationBt} disabled={posX === -3500 ? "disabled" : ""} onClick={() => { nextPosX() }}><img src={nextPrevIcon} /></button>
+                </div>
+            </>
         )
     } else {
         return (

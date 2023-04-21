@@ -3,7 +3,9 @@ body {
   font-family: 'Nunito', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(175, 203, 255);
+  background: linear-gradient(45deg, #778899, #87CEEB) no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
 
 code {

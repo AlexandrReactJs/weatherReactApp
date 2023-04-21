@@ -78,24 +78,28 @@ const CurrentlyWeather = () => {
                 </div>
                 <div className={styles.weatherParams}>
                     <div className={styles.weatherParametr}>
-                        <img className={styles.paramsIcon} src={windSpeedIcon} alt="wind" />
                         <h3>Скорость<br />ветра</h3>
                         <p>{data.wind.speed} м/с</p>
                     </div>
                     <div className={styles.weatherParametr}>
-                        <img className={styles.paramsIcon} src={humidityIcon} alt="humidity" />
                         <h3>Влажность<br />воздуха</h3>
                         <p>{data.main.humidity}%</p>
                     </div>
                     <div className={styles.weatherParametr}>
-                        <img className={styles.paramsIcon} src={pressureIcon} alt="humidity" />
                         <h3>Атмосферное<br />давление</h3>
                         <p>{data.main.pressure}гПа</p>
                     </div>
                     <div className={styles.weatherParametr}>
-                        <img className={styles.paramsIcon} src={feelsLikeIcon} alt="humidity" />
                         <h3>Ощущается<br />как</h3>
                         <p>{Math.floor(data.main.feels_like - 273)} <span className={styles.deg}>°</span></p>
+                    </div>
+                    <div className={styles.weatherParametr}>
+                        <h3>Видимость</h3>
+                        <p>{data.visibility / 1000}км</p>
+                    </div>
+                    <div className={styles.weatherParametr}>
+                        <h3>Порыв ветра</h3>
+                        <p>{data.wind.gust} м/с</p>
                     </div>
                 </div>
             </div >

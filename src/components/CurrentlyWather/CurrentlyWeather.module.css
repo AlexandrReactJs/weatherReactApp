@@ -64,6 +64,10 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 10px;
     margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 100%;
 }
 
 .weatherParametr{
@@ -72,7 +76,8 @@
     background-color: #fff;
     border-radius: 10px;
     width: 100%;
-    padding: 20px 0;
+    padding: 10px 0;
+    font-family: 'Roboto', sans-serif;
 
 }
 
@@ -82,14 +87,17 @@
 
 
 .weatherParametr h3{
+    font-family: 'Roboto', sans-serif;
     font-size: 18px;
-    color: rgb(175, 203, 255);
-    margin: 5px 0;
+    font-weight: 400;
+    color: rgb(158, 158, 158);
+    margin: 10px 0;
 }
 
 .weatherParametr p{
+    font-family: 'Roboto', sans-serif;
     font-size: 22px;
-    font-weight: 800;
+    font-weight: 900;
 }
 .paramsIcon{
     width: 60px;
