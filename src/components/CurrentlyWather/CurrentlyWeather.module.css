@@ -42,14 +42,8 @@
     margin-top: 20px;
 }
 
-.selectSity input{
-    border: unset;
-    outline: none;
-    background: none;
-    border-bottom: 2px solid rgb(175, 203, 255);
-    padding: 5px;
-    font-size: 18px;
-    font-weight: 600;
+.input{
+    
 }
 
 .selectSity img{

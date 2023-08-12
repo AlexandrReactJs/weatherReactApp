@@ -1,10 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import styles from './CurrentlyWeather.module.css';
-import windSpeedIcon from '../../assets/icons/windSpeed.png';
-import humidityIcon from '../../assets/icons/humidity.png';
-import pressureIcon from '../../assets/icons/pressure.png';
-import feelsLikeIcon from '../../assets/icons/feelsLike.png'
+import { TextField } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 
 import { setSityName } from "../../redux/slices/currentlyWeatherSlice";
@@ -73,7 +70,8 @@ const CurrentlyWeather = () => {
                         <h3 className={styles.cityName}>{cityName}</h3>
                     </div>
                     <div className={styles.selectSity}>
-                        <input onKeyDown={onClickEnter} ref={textareaRef} />
+                        <TextField className={styles.input} id="standard-secondary" label="City" color="secondary"  onKeyDown={onClickEnter} inputRef={textareaRef} />
+
                     </div>
                 </div>
                 <div className={styles.weatherParams}>

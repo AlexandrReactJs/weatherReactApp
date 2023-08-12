@@ -3,7 +3,7 @@ import React from 'react'
 import styles from './ChunkWeather.module.css';
 import OneChunk from './OneChunk/OneChunk';
 import { useSelector } from 'react-redux';
-import nextPrevIcon from '../../assets/icons/nextPrevIcon.png'
+import nextPrevIcon from '../../assets/icons/next.png'
 
 const ChunkWeather = ({ city }) => {
     const APIKey = '8448efcedad71b585b1da4a171837115';
@@ -43,6 +43,7 @@ const ChunkWeather = ({ city }) => {
 
                 </div>
                 <div>
+                    
                     <button className={styles.paginationBt} disabled={posX === 0 ? "disabled" : ""} onClick={() => { prevPosX() }}><img className={styles.backBt} src={nextPrevIcon} /></button>
                     <button className={styles.paginationBt} disabled={posX === -3500 ? "disabled" : ""} onClick={() => { nextPosX() }}><img src={nextPrevIcon} /></button>
                 </div>
