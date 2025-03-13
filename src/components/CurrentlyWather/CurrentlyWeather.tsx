@@ -3,64 +3,71 @@ import axios from 'axios';
 import styles from './CurrentlyWeather.module.css';
 import { TextField } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../redux/store";
 
-import { setSityName } from "../../redux/slices/currentlyWeatherSlice";
-import { setData } from "../../redux/slices/currentlyWeatherSlice";
+import { setSityName, setData } from "../../redux/slices/currentlyWeatherSlice";
 
+interface WeatherData {
+  main: {
+    temp: number;
+    feels_like: number;
+    humidity: number;
+    pressure: number;
+  };
+  weather: Array<{
+    icon: string;
+  }>;
+  wind: {
+    speed: number;
+    gust: number;
+  };
+  visibility: number;
+}
 
-
-const CurrentlyWeather = () => {
+const CurrentlyWeather: React.FC = () => {
     const dispatch = useDispatch();
 
-    const cityName = useSelector(state => state.currentlyWeather.cityName);
-    const data = useSelector(state => state.currentlyWeather.data);
+    const cityName = useSelector((state: RootState) => state.currentlyWeather.cityName);
+    const data = useSelector((state: RootState) => state.currentlyWeather.data);
 
-    const textareaRef = React.useRef();
+    const textareaRef = React.useRef<HTMLInputElement>(null);
 
     const APIKey = '8448efcedad71b585b1da4a171837115';
 
-
-
-    const onClickEnter = (event) => {
+    const onClickEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.keyCode === 13) {
-            onClickBt()
+            onClickBt();
         }
     }
 
     React.useEffect(() => {
         axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=moscow&limit=1&appid=${APIKey}`).then((res) => {
-            dispatch(setSityName(res.data[0].name))
+            dispatch(setSityName(res.data[0].name));
             axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${res.data[0].lat}&lon=${res.data[0].lon}&appid=${APIKey}`).then((res) => {
-                dispatch(setData(res.data))
+                dispatch(setData(res.data));
+            });
+        });
+    }, [dispatch]);
 
-            })
-        })
-
-    }, [dispatch])
-
-    const getWeatherData = (sity) => {
-        axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${sity}&limit=1&appid=${APIKey}`).then((res) => {
-
-            dispatch(setSityName(res.data[0].name))
+    const getWeatherData = (city: string) => {
+        axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${APIKey}`).then((res) => {
+            dispatch(setSityName(res.data[0].name));
             axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${res.data[0].lat}&lon=${res.data[0].lon}&appid=${APIKey}`).then((res) => {
-                dispatch(setData(res.data))
-
-            })
-        })
-
+                dispatch(setData(res.data));
+            });
+        });
     }
 
-
     const onClickBt = () => {
-        const value = textareaRef.current.value;
-        getWeatherData(value);
+        if (textareaRef.current) {
+            const value = textareaRef.current.value;
+            getWeatherData(value);
+        }
     }
 
     if (data) {
-
         return (
-
-            <div className={styles.CurrentlyWeather} >
+            <div className={styles.CurrentlyWeather}>
                 <div className={styles.sityWeatherWrapper}>
                     <div className={styles.weather}>
                         <h1>{Math.floor(data.main.temp - 273)}<span className={styles.deg}>°</span></h1>
@@ -70,8 +77,14 @@ const CurrentlyWeather = () => {
                         <h3 className={styles.cityName}>{cityName}</h3>
                     </div>
                     <div className={styles.selectSity}>
-                        <TextField className={styles.input} id="standard-secondary" label="City" color="secondary"  onKeyDown={onClickEnter} inputRef={textareaRef} />
-
+                        <TextField 
+                            className={styles.input} 
+                            id="standard-secondary" 
+                            label="City" 
+                            color="secondary"  
+                            onKeyDown={onClickEnter} 
+                            inputRef={textareaRef} 
+                        />
                     </div>
                 </div>
                 <div className={styles.weatherParams}>
@@ -100,11 +113,10 @@ const CurrentlyWeather = () => {
                         <p>{data.wind.gust} м/с</p>
                     </div>
                 </div>
-            </div >
-
-        )
+            </div>
+        );
     }
+    return null;
 }
 
-
-export default CurrentlyWeather;
+export default CurrentlyWeather; 

@@ -3,8 +3,7 @@ import React from 'react';
 import CurrentlyWeather from './components/CurrentlyWather/CurrentlyWeather';
 import ChunkWeather from './components/ChunkWeather/ChunkWeather';
 
-function App() {
-
+const App: React.FC = () => {
   return (
     <div className="App">
       <div className='container'>
@@ -15,4 +14,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 
